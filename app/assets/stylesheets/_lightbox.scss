@@ -1,0 +1,30 @@
+#lightbox_bg {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	z-index: 1001;
+	-moz-opacity: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+#lightbox_content {
+	display: none;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 50%;
+	height: 50%;
+	padding: 2em;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	z-index: 1002;
+	-moz-opacity: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	overflow: auto;
+}

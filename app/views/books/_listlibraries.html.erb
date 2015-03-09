@@ -1,0 +1,13 @@
+<div id="library_list">
+	<% if @book.libraries.empty? %>
+		This book is currently not assigned to any libraries.
+	<% else %>
+		<% @book.libraries.each do |library| %>
+			<div class="ListingRow">
+				<span class="ListingTitle"><%= library.name %></span><br />
+				<span class="ListingSubtitle">Location: <%= library.location %></span>
+				<div class="Button RemoveBtn"><%= link_to 'Remove', librarylist_book_path(:libraryid => library.id), remote: true, data: { confirm: 'Are you sure you want to remove the book from this library?' }, method: :delete %></div>
+			</div>
+		<% end %>
+	<% end %>
+</div>

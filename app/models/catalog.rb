@@ -1,4 +1,4 @@
 class Catalog < ActiveRecord::Base
-	belongs_to :libraries
-	belongs_to :books
+	belongs_to :library
+	belongs_to :book
 end

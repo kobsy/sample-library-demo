@@ -1,0 +1,14 @@
+<%= render partial: 'shared/header', locals: { section: "Book Admin" } %>
+<section>
+	<div id="main_content">
+		<div class="Button AddBtn"><%= link_to 'Add New', new_book_path, remote: true %></div>
+		<h1>All Available Books</h1>
+		<div id="book_listing">
+			<% @books.each do |book| %>
+				<%= render partial: 'listitem', locals: { book: book } %>
+			<% end %>
+		</div>
+	</div>
+</section>
+<%= render partial: 'shared/footer' %>
+<%= render partial: 'shared/lightbox' %>

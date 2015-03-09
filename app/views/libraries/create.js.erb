@@ -1,0 +1,6 @@
+<% if @library.errors.any? %>
+	$('#lightbox_content').html("<h1>New Library</h1><%= escape_javascript(render partial: 'form') %>");
+<% else %>
+	$('#library_listing').append("<%= escape_javascript(render partial: 'listitem', locals: { library: @library }) %>");
+	lightboxHide();
+<% end %>

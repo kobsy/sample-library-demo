@@ -1,0 +1,11 @@
+<h1>Assign to Libraries</h1>
+<%= form_for @book, remote: true, url: librarylist_book_path, method: :post do |f| %>
+	<% @libraries.each do |library| %>
+		<div class="LightboxListItem" id="library_id_<%= library.id %>">
+			<%= check_box_tag 'library_ids[]', library.id %>
+			<span class="ListingTitle"><%= library.name %></span>
+			<span class="ListingSubtitle">Location: <%= library.location %></span>
+		</div>
+	<% end %>
+	<%= f.submit %>
+<% end %>
