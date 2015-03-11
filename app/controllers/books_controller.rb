@@ -31,6 +31,7 @@ def index
 	
 	def create
 		@book = Book.new(book_params)
+		@book.isbn.delete!("-")
 		@book.save
 		
 		respond_to do |format|
@@ -40,6 +41,7 @@ def index
 	
 	def update
 		@book = Book.find(params[:id])
+		params[:isbn].delete!("-")
 		
 		@book.update(book_params)
 		respond_to do |format|

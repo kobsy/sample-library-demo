@@ -1,0 +1,11 @@
+<%= render partial: 'shared/header', locals: { section: @library.name + " Search" } %>
+<section>
+	<div id="main_content">
+		<div class="Button BackBtn"><%= link_to 'Back', root_path %></div>
+		<h1>Search Results for "<%= @term %>"</h1>
+		<% @books.each do |book| %>
+			<%= render partial: 'searchresult', locals: { book: book } %>
+		<% end %>
+	</div>
+</section>
+<%= render partial: 'shared/footer' %>

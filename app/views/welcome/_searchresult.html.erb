@@ -1,0 +1,34 @@
+<% available = false %>
+<% book.catalogs.each do |catalog| %>
+	<% if catalog.library_id == @library.id %>
+		<% available = true %>
+		<% break %>
+	<% end %>
+<% end %>
+<div class="ListingRow <%= available ? 'AvailableResult' : 'UnavailalbeResult' %>">
+	<span class="ListingTitle"><%= link_to book.title, book_path(book) %></span><br />
+	<span class="ListingSubtitle">
+		<% if available and book.catalogs.count > 1 %>
+			Also available at:
+			<% i = 0 %>
+			<% book.libraries.each do |library| %>
+				<% if i > 0 %>
+					and 
+				<% end %>
+				<% if library.id != @library.id %>
+					<%= library.name %>
+					<% i += 1 %>
+				<% end %>
+			<% end %>
+		<% elsif available %>
+			This book is available at <%= @library.name %>.
+		<% elsif book.catalogs.count > 0 %>
+			Available for inter-library loan at:
+			<% book.libraries.each_with_index do |library, i| %>
+				<%= i > 0 ? ' and ' : '' %><%= link_to library.name, library_path(library) %>
+			<% end %>
+		<% else %>
+			This book is unavailable at this time.
+		<% end %>
+	</span>
+</div>

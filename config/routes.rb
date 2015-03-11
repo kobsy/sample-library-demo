@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
 	root 'welcome#index'
 	
+	post 'search', to: 'welcome#search'
+	
 	resources :libraries do
 		member do
 			get 'booklist' # New action to list books for adding to the library in question.

@@ -1,2 +1,19 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<%= render partial: 'shared/header', locals: { section: "Sample Library System" } %>
+<section>
+	<div id="main_content">
+		<h1>Welcome to the Sample Library System</h1>
+		<p>To find a book, please select a library to search and enter your search term.<br />You may search by either book title or ISBN.</p>
+		<%= form_tag '/search' do -%>
+			<%= text_field_tag 'search', nil, placeholder: 'Title or ISBN' %><br />
+			<% @libraries.each_with_index do |library, i| %>
+				<div class="LibrarySearchOption">
+					<%= radio_button_tag 'libraryid', library.id, i == 0 %>
+					<span class="ListingTitle"><%= library.name %></span><br />
+					<span class="ListingSubtitle"><%= library.location %></span>
+				</div>
+			<% end %>
+			<%= submit_tag 'Search' %>
+		<% end -%>
+	</div>
+</section>
+<%= render partial: 'shared/footer' %>
