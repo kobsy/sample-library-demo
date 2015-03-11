@@ -10,7 +10,15 @@
 			<%= render partial: 'listbooks' %>
 		</div>
 		<div class="RightColumn">
-		
+			<h1>Most Popular Books</h1>
+			<ol>
+				<% @cataloglist.each do |catalog| %>
+					<li>
+						<span class="ListingTitle"><%= catalog.book.title %></span><br />
+						<span class="ListingSubtitle">Searched <%= pluralize catalog.search_count, "time" %></span>
+					</li>
+				<% end %>
+			</ol>
 		</div>
 	</div>
 </section>

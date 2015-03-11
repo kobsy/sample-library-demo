@@ -5,6 +5,9 @@ class LibrariesController < ApplicationController
 	
 	def show
 		@library = Library.find(params[:id])
+		@cataloglist = Catalog.where(library_id: @library.id).order(search_count: :desc).limit(10)
+		# @cataloglist = Catalog.includes(:books).where(library_id: @library.id).order(search_count: :desc)
+		# @booklist = Book.joins(:catalogs).where(["catalogs.library_id = ?", @library.id]).order("catalogs.search_count DESC")
 	end
 	
 	def new
