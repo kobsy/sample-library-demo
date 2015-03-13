@@ -2,3 +2,346 @@
 // Base style template for the site
 // To be included in application.css
 
+//$library-color:			#5e5;
+//$library-hover-color:	#3c3;
+$library-color:			#4d4;
+$library-hover-color:	#2b2;
+$blue-button-color:		#55e;
+$blue-button-hover:		#66f;
+$light-blue-color:		#bbe;
+$red-button-color:		#e55;
+$red-button-hover:		#f66;
+$orange-button-color:	#cc2;
+$orange-button-hover:	#dd4;
+$default-border-radius:	6px;
+$page-max-width:		720px;
+$font-stack:			"Avenir Next", Avenir, HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+
+body {
+	font-family: $font-stack;
+	margin: 0;
+	padding: 0;
+}
+
+strong {
+	font-weight: bold;
+}
+
+input[type=text] {
+	font-size: 1.2em;
+	color: #888;
+	border: 1px solid #ccc;
+	border-radius: $default-border-radius;
+	margin: 0.5em;
+	padding: 0.25em;
+}
+
+label {
+	font-size: 1.2em;
+	margin: 0.5em;
+	padding: 0.25em;
+}
+
+input[type=submit] {
+	font-size: 1em;
+	margin: 0.5em 0;
+	padding: 0.5em;
+	color: #fff;
+	background-color: $blue-button-color;
+	border: none;
+	border-radius: $default-border-radius;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: $blue-button-hover;
+}
+
+a {
+	color: $blue-button-color;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#header {
+	width: 100%;
+	background-color: $library-color;
+	color: #fff;
+	padding: 1em 0;
+	text-align: center;
+}
+
+#header h1 {
+	font-weight: bold;
+	font-size: 2.5em;
+	text-transform: uppercase;
+	margin: 0.5em 0;
+}
+
+#header ul {
+   margin: 0;
+   padding: 0;
+   text-align: center;
+   width: 100%;
+}
+
+#header li {
+   display: inline;
+   list-style: none;
+   font-weight: bold;
+}
+
+#header a {
+   color: #fff;
+   text-decoration: none;
+   padding: 0.5em 1em;
+   background-color: $library-color;
+   border-radius: $default-border-radius;
+}
+
+#header a:hover {
+   background-color: $library-hover-color;
+}
+
+@media all and (max-width: 699px) {
+	#header img {
+		max-width: 100px;
+		max-height: 100px;
+	}
+}
+
+#main_content {
+	max-width: $page-max-width;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+}
+
+#main_content h1 {
+	font-weight: bold;
+	font-size: 2em;
+	margin: 0.25em auto;
+	text-transform: uppercase;
+	max-width: 60%;
+}
+
+#main_content h2 {
+	font-size: 1.5em;
+}
+
+#main_content h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 0.5em;
+}
+
+div.Button a {
+	font-weight: bold;
+	text-transform: uppercase;
+	border-radius: $default-border-radius;
+	font-size: 0.8em;
+	margin: 0 0.5em;
+	padding: 1em;
+	text-decoration: none;
+}
+
+div.AddBtn a {
+	background-color: $blue-button-color;
+	color: #fff;
+	/* float: right; */
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+div.AddBtn a:hover {
+	background-color: $blue-button-hover;
+}
+
+div.RemoveBtn a {
+	background-color: $red-button-color;
+	float: right;
+	color: #fff;
+}
+
+div.RemoveBtn a:hover {
+	background-color: $red-button-hover;
+}
+
+div.EditBtn a {
+	float: right;
+	color: #fff;
+	background-color: #888;
+}
+
+div.EditBtn a:hover {
+	background-color: #aaa;
+}
+
+div.BackBtn a {
+	/* float: left; */
+	color: #fff;
+	background-color: $orange-button-color;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+div.BackBtn a:hover {
+	background-color: $orange-button-hover;
+}
+
+div.LibrarySearchOption {
+	border: 1px solid #ccc;
+	border-radius: $default-border-radius;
+	text-align: left;
+	margin: 1%;
+	padding: 1%;
+	width: 45%;
+	float: left;
+	cursor: pointer;
+	background-color: #fff;
+}
+
+div.LibrarySearchOption:hover {
+	background-color: #f8f8f8;
+}
+
+div.LibrarySearchOption span.ListingTitle {
+	font-size: 1.2em;
+}
+
+div.LibrarySearchOption span.ListingSubtitle {
+	float: right;
+}
+
+div.LibrarySearchOption input[type=radio] {
+	display: none;
+}
+
+div.CheckedButton {
+	background-color: $light-blue-color;
+	border-color: $light-blue-color;
+	color: #fff;
+}
+
+div.CheckedButton:hover {
+	background-color: $light-blue-color;
+}
+
+div.CheckedButton span {
+	color: #fff;
+}
+
+div.ListingRow {
+	text-align: left;
+	float: left;
+	width: 95%;
+	padding: 1em;
+	border-bottom: 1px solid #ccc;
+}
+
+div.ListingRow:first-of-type {
+	border-top: 1px solid #ccc;
+	margin-top: 1em;
+}
+
+div.ListingRow span.ListingTitle {
+	font-size: 2em;
+	text-transform: uppercase;
+}
+
+div.LeftColumn {
+	width: 65%;
+	float: left;
+}
+
+div.RightColumn {
+	width: 25%;
+	float: right;
+	border-radius: $default-border-radius;
+	background-color: #eee;
+	padding: 1em;
+	text-align: left;
+}
+
+@media all and (max-width: 699px) {
+	div.LeftColumn {
+		width: 90%;
+		margin: 5%;
+	}
+	
+	div.RightColumn {
+		float: right;
+		width: 80%;
+		padding: 5%;
+		margin: 5%;
+	}
+}
+
+#main_content div.RightColumn h1 {
+	width: inherit;
+	max-width: inherit;
+	margin: 0;
+}
+
+div.RightColumn span.ListingTitle {
+	font-size: 1.3em;
+}
+
+div.RightColumn span.ListingSubtitle {
+	font-size: 0.8em;
+}
+
+div.RightColumn ol {
+	text-align: left;
+	list-style: decimal;
+}
+
+div.RightColumn li {
+	margin-left: 1.5em;
+	margin-top: 0.5em;
+}
+
+div.UnavailalbeResult {
+	/* background-color: #f8f8f8; */
+}
+
+div.UnavailableResult span.ListingTitle a {
+	color: #aaa;
+}
+
+div.UnavailableResult span.ListingSubtitle {
+	color: #aaa;
+}
+
+div.AvailableResult {
+	position: relative;
+}
+
+div.AvailableResult span.ListingSubtitle {
+	color: #888;
+}
+
+span.ListingTitle {
+	font-weight: 500;
+	text-align: left;
+}
+
+span.ListingTitle a {
+	text-decoration: none;
+}
+
+span.ListingTitle a:hover {
+	/* color: #777; */
+	text-decoration: underline;
+}
+
+span.ListingSubtitle {
+	font-size: 1em;
+	font-weight: 300;
+}

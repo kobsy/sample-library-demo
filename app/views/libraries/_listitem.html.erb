@@ -1,6 +1,6 @@
 <div class="ListingRow" id="list_item_<%= library.id %>">
-	<span class="ListingTitle"><%= link_to library.name, library_path(library) %></span><br />
-	<span class="ListingSubtitle"><%= library.location %></span>
 	<div class="Button RemoveBtn"><%= link_to 'Remove', library_path(library), remote: true, data: { confirm: 'Are you sure you want to remove this library?' }, method: :delete %></div>
 	<div class="Button EditBtn"><%= link_to 'Edit', edit_library_path(library), remote: true %></div>
+	<span class="ListingTitle"><%= link_to library.name, library_path(library) %></span><br />
+	<span class="ListingSubtitle"><%= library.location %></span>
 </div>

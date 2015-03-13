@@ -4,16 +4,22 @@
 		<h1>Welcome to the Sample Library System</h1>
 		<p>To find a book, please select a library to search and enter your search term.<br />You may search by either book title or ISBN.</p>
 		<%= form_tag '/search' do -%>
-			<%= text_field_tag 'search', nil, placeholder: 'Title or ISBN' %><br />
+			<%= text_field_tag 'search', nil, placeholder: 'Title or ISBN' %><%= submit_tag 'Search' %><br />
 			<% @libraries.each_with_index do |library, i| %>
-				<div class="LibrarySearchOption">
-					<%= radio_button_tag 'libraryid', library.id, i == 0 %>
+				<div class="LibrarySearchOption<%= i==0 ? ' CheckedButton' : '' %>">
+					<%= radio_button_tag 'libraryid', library.id, i==0 %>
 					<span class="ListingTitle"><%= library.name %></span><br />
 					<span class="ListingSubtitle"><%= library.location %></span>
 				</div>
 			<% end %>
-			<%= submit_tag 'Search' %>
 		<% end -%>
 	</div>
 </section>
+<script>
+$(".LibrarySearchOption").click(function() {
+	$(this).children("input[type=radio]").prop("checked", true);
+	$(".LibrarySearchOption").removeClass("CheckedButton");
+	$(this).addClass("CheckedButton");
+});
+</script>
 <%= render partial: 'shared/footer' %>

@@ -1,20 +1,19 @@
 class LibrariesController < ApplicationController
 	def index
-		@libraries = Library.all
+		@libraries = Library.all.order(name: :asc)
 	end
 	
 	def show
 		@library = Library.find(params[:id])
 		@cataloglist = Catalog.where(library_id: @library.id).order(search_count: :desc).limit(10)
-		# @cataloglist = Catalog.includes(:books).where(library_id: @library.id).order(search_count: :desc)
-		# @booklist = Book.joins(:catalogs).where(["catalogs.library_id = ?", @library.id]).order("catalogs.search_count DESC")
 	end
 	
 	def new
 		@library = Library.new
 		respond_to do |format|
 			format.html do
-				@libraries = Library.all
+				# Again, this should be ajax-only, so redirect to index
+				@libraries = Library.all.order(name: :asc)
 				redirect_to libraries_path
 			end
 			format.js
@@ -25,7 +24,7 @@ class LibrariesController < ApplicationController
 		@library = Library.find(params[:id])
 		respond_to do |format|
 			format.html do
-				@libraries = Library.all
+				@libraries = Library.all.order(name: :asc)
 				redirect_to libraries_path
 			end
 			format.js
@@ -62,8 +61,7 @@ class LibrariesController < ApplicationController
 	
 	def booklist
 		@library = Library.find(params[:id])
-		#@books = Book.joins("LEFT OUTER JOIN catalogs ON books.id = catalogs.book_id AND catalogs.library_id <> #{@library.id}")
-		@books = Book.find_by_sql("SELECT * FROM books b WHERE NOT EXISTS( SELECT 1 FROM catalogs c WHERE b.id == c.book_id AND c.library_id == #{@library.id})")
+		@books = Book.find_by_sql("SELECT * FROM books b WHERE NOT EXISTS( SELECT 1 FROM catalogs c WHERE b.id == c.book_id AND c.library_id == #{@library.id}) ORDER BY b.title ASC")
 		
 		respond_to do |format|
 			format.js

@@ -4,9 +4,9 @@
 	<% else %>
 		<% @library.books.each do |book| %>
 			<div class="ListingRow">
+				<div class="Button RemoveBtn"><%= link_to 'Remove', booklist_library_path(:bookid => book.id), remote: true, data: { confirm: 'Are you sure you want to remove this book from the library?' }, method: :delete %></div>
 				<span class="ListingTitle"><%= book.title %></span><br />
 				<span class="ListingSubtitle">ISBN: <%= book.isbn %></span>
-				<div class="Button RemoveBtn"><%= link_to 'Remove', booklist_library_path(:bookid => book.id), remote: true, data: { confirm: 'Are you sure you want to remove this book from the library?' }, method: :delete %></div>
 			</div>
 		<% end %>
 	<% end %>

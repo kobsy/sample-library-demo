@@ -1,17 +1,16 @@
 <%= render partial: 'shared/header', locals: { section: "Book Admin" } %>
 <section>
 	<div id="main_content">
-		<div class="Button BackBtn"><%= link_to 'Back', books_path %></div>
+		<% unless @from_search %>
+			<div class="Button BackBtn"><%= link_to 'Back', books_path %></div>
+		<% else %>
+			<div class="Button BackBtn"><%= link_to 'Back', search_path(search: @search_term, libraryid: @library_id), method: :post %></div>
+		<% end %>
+		<div class="Button AddBtn"><%= link_to '+ Library', librarylist_book_path, remote: true %></div>
 		<h1><%= @book.title %></h1>
 		<h2>ISBN: <%= @book.isbn %></h2>
-		<div class="LeftColumn">
-			<h3>Libraries Where Available</h3>
-			<div class="Button AddBtn"><%= link_to 'Add', librarylist_book_path, remote: true %></div>
-			<%= render partial: 'listlibraries' %>
-		</div>
-		<div class="RightColumn">
-		
-		</div>
+		<h3>Libraries Where Available</h3>
+		<%= render partial: 'listlibraries' %>
 	</div>
 </section>
 <%= render partial: 'shared/footer' %>

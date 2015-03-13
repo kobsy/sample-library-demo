@@ -5,30 +5,36 @@
 		<% break %>
 	<% end %>
 <% end %>
-<div class="ListingRow <%= available ? 'AvailableResult' : 'UnavailalbeResult' %>">
-	<span class="ListingTitle"><%= link_to book.title, book_path(book) %></span><br />
+<% book_title = book.title %>
+<% unless @term_array.empty? %>
+	<% regex_string = '(' + @term_array.join('|') + ')' %>
+	<% search_regex = Regexp.new(regex_string,true) %>
+	<% book_title.gsub!(search_regex, '<strong>\\1</strong>') %>
+<% end %>
+<div class="ListingRow <%= available ? 'AvailableResult' : 'UnavailableResult' %>">
+	<span class="ListingTitle"><%= link_to book_path(book, search_info: {search: @term, library_id: @library.id}) do book_title.html_safe end %></span><br />
 	<span class="ListingSubtitle">
 		<% if available and book.catalogs.count > 1 %>
-			Also available at:
+			This book is <strong>AVAILABLE</strong>. Also available at:
 			<% i = 0 %>
 			<% book.libraries.each do |library| %>
-				<% if i > 0 %>
-					and 
-				<% end %>
 				<% if library.id != @library.id %>
-					<%= library.name %>
+					<% if i > 0 %>
+						and 
+					<% end %>
+					<%= link_to library.name, library_path(library) %>
 					<% i += 1 %>
 				<% end %>
 			<% end %>
 		<% elsif available %>
-			This book is available at <%= @library.name %>.
+			This book is <strong>AVAILABLE</strong> here at <%= @library.name %>.
 		<% elsif book.catalogs.count > 0 %>
-			Available for inter-library loan at:
+			This book is <strong>UNAVAILABLE</strong> here, but available for inter-library loan at:
 			<% book.libraries.each_with_index do |library, i| %>
 				<%= i > 0 ? ' and ' : '' %><%= link_to library.name, library_path(library) %>
 			<% end %>
 		<% else %>
-			This book is unavailable at this time.
+			This book is <strong>UNAVAILABLE</strong> at this time.
 		<% end %>
 	</span>
 </div>

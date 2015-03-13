@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 	def index
-  		@libraries = Library.all
+  		@libraries = Library.all.order(name: :asc)
 	end
 	
 	def search
@@ -37,7 +37,7 @@ class WelcomeController < ApplicationController
 		
 		final_query = [ query_str, query_array ].flatten
 		
-		@books = Book.where(final_query)
+		@books = Book.where(final_query).order(title: :asc)
 		
 		# Is this the functionality desired for the search_count counter?
 		# Each match's search_count will be incremented, no matter how trivial the match.

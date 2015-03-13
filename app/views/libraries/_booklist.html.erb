@@ -1,11 +1,11 @@
-<h1>Select Books</h1>
+<h1>Select Books to Add</h1>
 <%= form_for @library, remote: true, url: booklist_library_path, method: :post do |f| %>
 	<% @books.each do |book| %>
 		<div class="LightboxListItem" id="book_id_<%= book.id %>">
 			<%= check_box_tag 'book_ids[]', book.id %>
-			<span class="ListingTitle"><%= book.title %></span>
+			<span class="ListingTitle"><%= book.title %></span><br />
 			<span class="ListingSubtitle">ISBN: <%= book.isbn %></span>
 		</div>
 	<% end %>
-	<%= f.submit %>
+	<%= f.submit 'Add Books' %>
 <% end %>

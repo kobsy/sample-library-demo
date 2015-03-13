@@ -2,11 +2,11 @@
 <section>
 	<div id="main_content">
 		<div class="Button BackBtn"><%= link_to 'Back', libraries_path %></div>
+		<div class="Button AddBtn"><%= link_to '+ Book', booklist_library_path, remote: true %></div>
 		<h1><%= @library.name %></h1>
 		<h2><%= @library.location %></h2>
 		<div class="LeftColumn">
 			<h3>Books Available</h3>
-			<div class="Button AddBtn"><%= link_to 'Add', booklist_library_path, remote: true %></div>
 			<%= render partial: 'listbooks' %>
 		</div>
 		<div class="RightColumn">

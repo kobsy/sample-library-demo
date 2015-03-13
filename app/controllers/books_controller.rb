@@ -1,17 +1,24 @@
 class BooksController < ApplicationController
 def index
-		@books = Book.all
+		@books = Book.all.order(title: :asc)
 	end
 	
 	def show
 		@book = Book.find(params[:id])
+		@from_search = false
+		unless params[:search_info].nil?
+			@from_search = true
+			@search_term = params[:search_info][:search]
+			@library_id = params[:search_info][:library_id]
+		end
 	end
 	
 	def new
 		@book = Book.new
 		respond_to do |format|
 			format.html do
-				@books = Book.all
+				# Deftly redirect to the index page, since this should be ajax-only
+				@books = Book.all.order(title: :asc)
 				redirect_to books_path
 			end
 			format.js
@@ -22,7 +29,7 @@ def index
 		@book = Book.find(params[:id])
 		respond_to do |format|
 			format.html do
-				@books = Book.all
+				@books = Book.all.order(title: :asc)
 				redirect_to books_path
 			end
 			format.js
@@ -61,7 +68,7 @@ def index
 	
 	def librarylist
 		@book = Book.find(params[:id])
-		@libraries = Library.find_by_sql("SELECT * FROM libraries l WHERE NOT EXISTS( SELECT 1 FROM catalogs c WHERE l.id == c.library_id AND c.book_id == #{@book.id})")
+		@libraries = Library.find_by_sql("SELECT * FROM libraries l WHERE NOT EXISTS( SELECT 1 FROM catalogs c WHERE l.id == c.library_id AND c.book_id == #{@book.id}) ORDER BY l.name ASC")
 		
 		respond_to do |format|
 			format.js
