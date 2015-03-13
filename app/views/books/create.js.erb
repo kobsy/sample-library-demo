@@ -1,5 +1,6 @@
 <% if @book.errors.any? %>
 	$('#lightbox_content').html("<h1>Add New Book</h1><%= escape_javascript(render partial: 'form') %>");
+	lightboxAddClose();
 <% else %>
 	$('#book_listing').append("<%= escape_javascript(render partial: 'listitem', locals: { book: @book }) %>");
 	lightboxHide();

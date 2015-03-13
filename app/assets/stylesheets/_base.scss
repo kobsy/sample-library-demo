@@ -2,8 +2,6 @@
 // Base style template for the site
 // To be included in application.css
 
-//$library-color:			#5e5;
-//$library-hover-color:	#3c3;
 $library-color:			#4d4;
 $library-hover-color:	#2b2;
 $blue-button-color:		#55e;
@@ -152,7 +150,6 @@ div.Button a {
 div.AddBtn a {
 	background-color: $blue-button-color;
 	color: #fff;
-	/* float: right; */
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -183,7 +180,6 @@ div.EditBtn a:hover {
 }
 
 div.BackBtn a {
-	/* float: left; */
 	color: #fff;
 	background-color: $orange-button-color;
 	position: absolute;
@@ -289,10 +285,6 @@ div.RightColumn {
 	margin: 0;
 }
 
-div.RightColumn span.ListingTitle {
-	font-size: 1.3em;
-}
-
 div.RightColumn span.ListingSubtitle {
 	font-size: 0.8em;
 }
@@ -305,10 +297,6 @@ div.RightColumn ol {
 div.RightColumn li {
 	margin-left: 1.5em;
 	margin-top: 0.5em;
-}
-
-div.UnavailalbeResult {
-	/* background-color: #f8f8f8; */
 }
 
 div.UnavailableResult span.ListingTitle a {
@@ -337,7 +325,6 @@ span.ListingTitle a {
 }
 
 span.ListingTitle a:hover {
-	/* color: #777; */
 	text-decoration: underline;
 }
 

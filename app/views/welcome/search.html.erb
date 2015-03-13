@@ -1,10 +1,14 @@
 <%= render partial: 'shared/header', locals: { section: @library.name + " Search" } %>
 <section>
 	<div id="main_content">
-		<div class="Button BackBtn"><%= link_to 'Back', root_path %></div>
+		<div class="Button BackBtn"><%= link_to 'Back', root_path(libraryid: @library.id) %></div>
 		<h1>Search Results for "<%= @term %>"</h1>
-		<% @books.each do |book| %>
-			<%= render partial: 'searchresult', locals: { book: book } %>
+		<% if @books.empty? %>
+			Sorry, your search returned no results.
+		<% else %>
+			<% @books.each do |book| %>
+				<%= render partial: 'searchresult', locals: { book: book } %>
+			<% end %>
 		<% end %>
 	</div>
 </section>

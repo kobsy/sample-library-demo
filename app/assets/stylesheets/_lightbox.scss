@@ -47,8 +47,18 @@
 	text-transform: uppercase;
 }
 
+#lightbox_content h2 {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
 #lightbox_content br {
 	clear: both;
+}
+
+#lightbox_content ul li {
+	list-style: disc;
+	margin-left: 1em;
 }
 
 #lightbox_content label {

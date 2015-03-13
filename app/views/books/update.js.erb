@@ -1,5 +1,6 @@
 <% if @book.errors.any? %>
 	$('#lightbox_content').html("<h1>Edit Book</h1><%= escape_javascript(render partial: 'form') %>");
+	lightboxAddClose();
 <% else %>
 	$('#list_item_<%= @book.id %>').replaceWith("<%= escape_javascript(render partial: 'listitem', locals: { book: @book }) %>");
 	lightboxHide();

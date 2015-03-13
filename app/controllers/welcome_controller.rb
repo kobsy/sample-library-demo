@@ -1,6 +1,12 @@
 class WelcomeController < ApplicationController
 	def index
   		@libraries = Library.all.order(name: :asc)
+  		# Add a paramater so that we can keep our selected library selected if we go
+  		# back from search results.
+  		@libraryid = ''
+  		if params.has_key?(:libraryid)
+  			@libraryid = params[:libraryid]
+  		end
 	end
 	
 	def search
@@ -21,7 +27,6 @@ class WelcomeController < ApplicationController
 		# Assuming a title, we'll break up the title into words and search for each of them in an
 		# OR construction. This will hopefully get us more matches, even if they
 		# get a word wrong or out-of-order.
-		# TODO: Figure out a way to rank results by most words matched.
 		
 		# If we're divvying it up into words, we'll also be disregarding the punctuation
 		@term_array = @term.delete('.,"\':;]}\\|[{!?@#$%\^&*()\-_=+/<>~`').split
