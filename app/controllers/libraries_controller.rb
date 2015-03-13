@@ -42,8 +42,8 @@ class LibrariesController < ApplicationController
 	
 	def update
 		@library = Library.find(params[:id])
-		
 		@library.update(library_params)
+		
 		respond_to do |format|
 			format.js
 		end	
@@ -78,7 +78,6 @@ class LibrariesController < ApplicationController
 		
 		@library.books << @books
 		@books.each do |book|
-			#catalogentry = Catalog.where("book_id = ? AND library_id = ?", book.id, @library.id)
 			catalogentry = Catalog.find_by book_id: book.id, library_id: @library.id
 			catalogentry.search_count = 0
 			catalogentry.save
